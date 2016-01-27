@@ -9,7 +9,7 @@ $(document).ready(function() {
     var commentContent = $(this).serialize();
 
     var createRequest = $.ajax({
-      url: '/posts',
+      url: 'comments/',
       type: 'POST',
       data: commentContent
     })
