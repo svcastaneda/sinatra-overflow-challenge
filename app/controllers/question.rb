@@ -4,9 +4,14 @@ end
 
 post '/questions' do
   if session[:user_id]
-    user = User.find(session[:user_id])
-    question = Question.create(user_id: user.id, title: params[:question_title], body: params[:question_body])
-    redirect "/questions/#{question.id}"
+    @user = User.find(session[:id])
+    @question = Question.new(user_id: user.id, title: params[:question_title], body: params[:question_body])
+    if question.save
+      redirect "/questions/#{question.id}"
+    else
+      @errors = question.errors.full_messages
+      erb :'/questions/errors'
+    end
   else
     redirect "/user/login"
   end
