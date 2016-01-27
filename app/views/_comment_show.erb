@@ -1,0 +1,12 @@
+<!-- <form name = "new_comment" id="new_comment" action = "/" method = "post">
+  <textarea> rows="4" cols="50" name="comment_text" placeholder="add your comment here"</textarea>
+  <input type= "submit" value = "Submit comment">
+</form> -->
+
+<article id="<%= comment.id %>">
+  <p>
+    <span class='author'><%= comment.author %></span>
+    <span class='username'><%= comment.body %></span>
+    <span class='timestamp'><%= comment.timestamp %></span>
+  </p>
+</article>
