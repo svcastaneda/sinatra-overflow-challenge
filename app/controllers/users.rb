@@ -1,9 +1,5 @@
 get '/users/login'  do
-  if current_user
-    redirect to '/'
-  else
     erb :'users/login'
-  end
 end
 
 post '/users/login' do
