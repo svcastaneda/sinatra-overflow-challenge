@@ -1,3 +1,9 @@
+<% if session[:user_id] != nil %>
+  <div>
+    <a href="questions/new">Ask a Question!</a>
+  </div>
+<% end %>
+
 <% @questions.each do |question| %>
 	<div class="question">
 		<h3><a href="/questions/<%= question.id %>"><%= question.title %></a></h3>

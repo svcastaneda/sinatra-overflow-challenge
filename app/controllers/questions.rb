@@ -4,6 +4,7 @@ get '/questions/?' do
 end
 
 get '/questions/new' do
+  redirect '/login' unless current_user
   erb :'questions/new'
 end
 
@@ -11,10 +12,10 @@ post '/questions' do
   if current_user
     @user = User.find(session[:id])
     @question = Question.new(user_id: current_user.id, title: params[:question_title], body: params[:question_body])
-    if question.save
-      redirect "/questions/#{question.id}"
+    if @question.save
+      redirect "/questions/#{@question.id}"
     else
-      @errors = question.errors.full_messages
+      @errors = @question.errors.full_messages
       erb :'/questions/errors'
     end
   else
