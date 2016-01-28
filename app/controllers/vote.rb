@@ -1,21 +1,24 @@
-post '/questions/:question_id/votes/:value' do
+post '/questions/:question_id/votes/new/:type' do
   if request.xhr?
-    vote = Vote.create(user_id: current_user.id, value: params[:value], voteable_type: "Question", voteable_id: params[:question_id])
+    question = Question.find(params[:question_id])
+    value = vote_value(params[:type])
+    question.votes.create(user_id: current_user.id, value: value) if current_user
+    
     content_type :json
-    {value: vote.value}.to_json
+    {score: score(question)}.to_json
   else
     redirect "/question/#{params[:question_id]}"
   end
 end
 
-post '/answers/:answer_id/votes/new/:value' do
+post '/answers/:answer_id/votes/new/:type' do
   if request.xhr?
     answer = Answer.find(params[:answer_id])
-    p params[:value]
-    vote = answer.votes.create(user_id: current_user.id, value: params[:value]) if current_user
+    value = vote_value(params[:type])
+    answer.votes.create(user_id: current_user.id, value: value) if current_user
     
     content_type :json
-    {vote_value: vote.value}.to_json
+    {score: score(answer)}.to_json
   else
     redirect "/question/#{params[:question_id]}"
   end
