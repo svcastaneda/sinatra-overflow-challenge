@@ -12,3 +12,21 @@ post '/questions/:question_id/answers' do
     redirect "/user/login"
   end
 end
+
+put '/answers/:answer_id' do
+  p params
+  @answer = Answer.find(params[:answer_id])
+  if params[:starred] == 'true'
+    @star_status = true
+  elsif params[:starred] == 'false'
+    @star_status = false
+  end
+  p @star_status
+  if request.xhr?
+    @answer.update_attribute(:starred, @star_status)
+  else
+    @answer.update_attribute(:starred, @star_status)
+    @question = Question.find(params[:question_id])
+    erb :'questions/show'
+  end
+end
