@@ -42,7 +42,7 @@ $(document).ready(function() {
 	});
 
 
-	$('button.addComment').on('click', function(event) {
+	$('.container').on('click', 'button.addComment', function(event) {
 		$('form.newComment').show();
 	});
 
@@ -57,7 +57,7 @@ $(document).ready(function() {
 		$(this).prev().show();
 	});
 
-	$('.question .vote a').on('click', function(event) {
+	$('.container').on('click', '.question .vote a', function(event) {
 		event.preventDefault();
 
     var request = $.ajax({
@@ -129,9 +129,11 @@ $(document).ready(function() {
 		});
 		answerSubmit.done(function(response) {
 			$('.container').append(response);
+			$('.answerCommentForm').hide();
 			var answersCount = parseInt($('.answers-count').text())
 			answersCount++;
 			$('.answers-count').text(answersCount+' answers');
+			answerForm.trigger('reset');
 		});
 	});
 });
