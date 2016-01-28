@@ -6,6 +6,41 @@ $(document).ready(function() {
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
 	$('.answerCommentForm').hide();
 
+	$('body').on('submit', '.answerCommentForm', function( event ) {
+		event.preventDefault();
+    var commentContent = $(this).serialize();
+    var postId = $(this).closest('article').attr('id');
+
+
+    var createRequest = $.ajax({
+      url: '/answers/'+ postId + '/comments/new',
+      type: 'POST',
+      data: commentContent
+    });
+
+		createRequest.done(function(response){
+      $('#'+postId + ' .answerDetails').append(response);
+      $(".answerCommentForm").trigger("reset");
+    });
+	});
+
+	$('body').on('submit', '.questionCommentForm', function( event ) {
+		event.preventDefault();
+    var commentContent = $(this).serialize();
+    var postId = $('.question').attr('id');
+
+    var createRequest = $.ajax({
+      url: '/questions/'+ postId + '/comments/new',
+      type: 'POST',
+      data: commentContent
+    });
+
+		createRequest.done(function(response){
+      $('.questionComments').append(response);
+      $(".questionCommentForm").trigger("reset");
+    });
+	});
+
 
 	$('button.addComment').on('click', function(event) {
 		$('form.newComment').show();

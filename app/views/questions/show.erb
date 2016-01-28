@@ -1,4 +1,5 @@
-<div class="question" value="<%= @question.id %>">
+
+<div class="question" id="<%= @question.id %>">
 	<div class="vote">
 		<a href="/questions/<%= @question.id %>/votes/new/upvote" class="arrow-up"></a>
 		<span><%= score(@question) %></span>
@@ -9,6 +10,13 @@
 		<p><%= @question.body %></p>
 	</div>
 </div>
+	<div class = "questionComments">
+		<h4>Question Comments</h4>
+			<% @question.comments.each do |comment| %>
+				<%= erb :"partials/_comment_show", locals: {
+					comment: comment, comment_form_name: "comment"} %>
+			<% end %>
+		</div>
 
 <h3 class="answers-count"><%= @answers.count %> answers</h3>
 
@@ -19,7 +27,9 @@
 <hr>
 
 <% @answers.each do |answer| %>
+
 	<%= erb :'partials/_answer_show', locals: {answer: answer} %>
+
 <% end %>
 
 <% if current_user %>
