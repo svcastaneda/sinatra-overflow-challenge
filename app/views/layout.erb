@@ -14,10 +14,26 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
-
-  <title></title>
+  <title>Beard Overflow</title>
 </head>
 <body>
-  <%= yield %>
+	<header>
+		<a href="/">
+			<img src="/images/Beard-9.png" width="30px" alt="logo">
+			<h1>Beard Overflow</h1>
+		</a>
+		<nav>
+			<% if current_user %>
+				<a href="/users/<%= current_user.username %>"><%= current_user.username %></a>
+				<a href="/users/logout">logout</a>
+			<% else %>
+				<a href="/login">login</a>
+				<a href="/users/new">register</a>
+			<% end %>
+		</nav>
+	</header>
+	<div class="container">
+	  <%= yield %>
+	</div>
 </body>
 </html>
