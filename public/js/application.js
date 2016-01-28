@@ -36,7 +36,7 @@ $(document).ready(function() {
 
 		createRequest.done(function(response){
 			console.log(response)
-      $('.questionComments').append(response);
+      $('.questionDetails').append(response);
     });
 	});
 
