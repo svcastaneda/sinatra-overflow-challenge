@@ -1,13 +1,5 @@
-<!--<article id="<%= comment.id %>">
-  <p>
-    <span class='author'><%= comment.author %></span>
-    <span class='username'><%= comment.body %></span>
-    <span class='timestamp'><%= format_timestamp(comment.created_at) %></span>
-  </p>
-</article> -->
-
 <article id="<%= comment.id %>" class="<%= comment_form_name %>">
 	<p><%= comment.body %></p>
-	<span class="author"><%= comment.author %></span>
+	<span class="author"><a href="/users/<%= author(comment) %>"><%= author(comment) %></a>
 	<span class="timestamp"><%= format_timestamp(comment.updated_at) %></span>
 </article>

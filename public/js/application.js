@@ -6,21 +6,6 @@ $(document).ready(function() {
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
 	$('.answerCommentForm').hide();
 	
-	// $('form.').on('submit', function( event ) {
-// 		event.preventDefault();
-//     var commentContent = $(this).serialize();
-//
-//     var createRequest = $.ajax({
-//       url: 'comments/',
-//       type: 'POST',
-//       data: commentContent
-//     });
-//
-// 		createRequest.done(function(response){
-//       $('').append(response);
-//     });
-// 	});
-	
 	$('button.addComment').on('click', function(event) {
 		$('form.newComment').show();
 	});
@@ -35,5 +20,42 @@ $(document).ready(function() {
 		event.preventDefault();
 		$(this).hide();
 		$(this).prev().show();
+	});
+	  
+	$('.question .vote a').on('click', function(event) {
+		event.preventDefault();
+		// var voteCount = $('.question .vote span').text()
+//
+//     var request = $.ajax({
+// 			url: "/questions/" + $('.question').attr('value') + "/votes/new/",
+//       method: "post",
+//       dataType: "JSON"
+//     });
+//
+//     request.done(function(response) {
+// 			console.log(response['value'])
+// 			$('.question .vote span').text(voteCount + response['vote']['value']);
+//     });
+
+	});
+	  
+	$('.container').on('click', '.answer .vote a', function(event) {
+		event.preventDefault();
+    var voteButton = $(this);
+		var voteCount = parseInt($(voteButton).parent().children('span').text());
+		
+		if (voteButton.attr('class') == 'arrow-up') { var value = 1 }
+		else { var value = -1 };
+		
+    var request = $.ajax({
+      url: "/answers/" + $('.answer').attr('id') + "/votes/new/" + value,
+      method: "post",
+      dataType: "JSON"
+    });
+
+    request.done(function(response) {
+			$(voteButton).parent().children('span').text(voteCount + response['vote_value']);
+    });
+		
 	});
 });
