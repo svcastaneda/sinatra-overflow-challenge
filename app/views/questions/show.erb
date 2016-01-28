@@ -12,6 +12,10 @@
 
 <h3><%= @answers.count %> answers</h3>
 
+<% if current_user %>
+	<%= erb :"partials/_answer_new" %>
+<% end %>
+
 <hr>
 
 <% @answers.each do |answer| %>
@@ -20,19 +24,20 @@
 			<span class="arrow-up"></span>
 			<%= score(@question) %>
 			<span class="arrow-down"></span>
+			<%= erb :'partials/_star_show', locals: {answer: answer}  %>
 		</div>
 		<div class="answerDetails">
 			<%= erb :"partials/_comment_show", locals: {comment: answer, comment_form_name: "answer_comment"} %>
-	
+
 			<% answer.comments.each do |comment| %>
 				<!-- <article id="<%= comment.id %>" class="comment"> -->
 					<%= erb :"partials/_comment_show", locals: {comment: comment, comment_form_name: "comment"} %>
 				<!-- </article> -->
 			<% end %>
 		</div>
-	
+
 		<button id="<%= answer.id %>" class="addComment">add comment</button>
-		
+
 		<%= erb :"partials/_comment_new", locals: {commented_on_type: 'answers', commented_on: answer.id, comment_form_name: "answerCommentForm"} %>
 	</article>
 <% end %>
