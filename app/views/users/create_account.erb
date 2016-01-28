@@ -5,11 +5,13 @@
     <% end %>
   </ul>
 <% end %>
-
-<form action="/users" method="post">
-  <label for="username">Username:</label>
-    <input type="text" name="new_account[username]">
-  <label for="password">Password</label>
-    <input type="password" name="new_account[password]">
-  <input type="submit" value="Create Account">
-</form>
+<div class="login">
+  <form action="/users" method="post">
+    <label for="username">Username</label>
+      <input type="text" name="new_account[username]" placeholder="zoltron">
+    <label for="password">Password</label>
+      <input type="password" name="new_account[password]" placeholder="*********">
+    <button type="submit" value="Create Account">Create Account</button>
+    <p>By registering, you agree to the <a href="#">privacy policy</a> and <a href="#">terms of service</a>.</p>
+  </form>
+</div>

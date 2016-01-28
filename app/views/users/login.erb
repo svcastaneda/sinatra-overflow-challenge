@@ -1,7 +1,10 @@
 <div class="login">
   <form action="/users" method="post">
-    <input type="text" name="username"  placeholder="Username">
-    <input type="password" name="password"  placeholder="Password">
+    <label for="username">Username</label>
+      <input type="text" name="username"  placeholder="zoltron">
+    <label for="password">Password</label>
+      <input type="password" name="password"  placeholder="**********">
     <button type="submit" value="Login">Login</button>
+    <p>Don't have an account? <a href="/users/new">Sign up</a></p>
   </form>
 </div>
