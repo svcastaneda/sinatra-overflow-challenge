@@ -42,7 +42,7 @@
 			<% end %>
 		</div>
 
-		<button id="<%= answer.id %>" class="addComment">add comment</button>
+		<button class="addComment">add comment</button>
 
 		<%= erb :"partials/_comment_new", locals: {commented_on_type: 'answers', commented_on: answer.id, comment_form_name: "answerCommentForm"} %>
 	</article>

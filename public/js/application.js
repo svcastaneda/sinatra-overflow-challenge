@@ -11,6 +11,7 @@ $(document).ready(function() {
     var commentContent = $(this).serialize();
     var postId = $(this).closest('article').attr('id');
 
+
     var createRequest = $.ajax({
       url: '/answers/'+ postId + '/comments/new',
       type: 'POST',
@@ -18,8 +19,9 @@ $(document).ready(function() {
     });
 
 		createRequest.done(function(response){
-			console.log(response)
-      $('.answerDetails').append(response);
+			console.log(response);
+      $('#'+postId + ' .answerDetails').append(response);
+      $(".answerCommentForm").trigger("reset");
     });
 	});
 
@@ -36,7 +38,8 @@ $(document).ready(function() {
 
 		createRequest.done(function(response){
 			console.log(response)
-      $('.questionDetails').append(response);
+      $('.questionComments').append(response);
+      $(".questionCommentForm").trigger("reset");
     });
 	});
 
