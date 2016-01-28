@@ -32,6 +32,14 @@ get '/users/logout' do
   redirect '/'
 end
 
+get '/users/terms' do
+  erb :'users/terms'
+end
+
+get '/users/privacy' do
+  erb :'users/privacy'
+end
+
 get '/users/:username' do
   @user = User.find_by(username: params[:username])
   erb :'users/show'
@@ -41,3 +49,4 @@ end
 #   session[:user_id] = nil
 #   redirect '/'
 # end
+

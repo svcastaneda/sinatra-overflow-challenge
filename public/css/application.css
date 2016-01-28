@@ -18,7 +18,7 @@
 .login button {
   margin: 5px auto;
   color: #fff;
-  background-color: #6496c8;
+  background-color: #D23232;
   text-shadow: -1px 1px #417cb8;
   border: none;
   border-radius: 5px;
@@ -40,7 +40,7 @@
 
 body {
 	min-width: 425px;
-	max-width: 900px;	
+	max-width: 900px;
 	margin: auto;
 }
 
@@ -126,14 +126,14 @@ nav a:not(:first-child) {
 }
 
 .arrow-up {
-	width: 20px; 
+	width: 20px;
 	height: 15px;
 	background: url('/images/upvote.png') no-repeat;
 	background-size: 20px;
 }
 
 .arrow-down {
-	width: 20px; 
+	width: 20px;
 	height: 15px;
 	background: url('/images/downvote.png') no-repeat;
 	background-size: 20px;
@@ -166,4 +166,9 @@ nav a:not(:first-child) {
 
 .answerCommentForm button, .questionCommentForm button {
 	width: 7em;
+}
+
+#terms {
+  width: 100%;
+  text-align: center;
 }
