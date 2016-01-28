@@ -2,8 +2,14 @@ post '/questions/:question_id/answers' do
   if current_user
     @user = User.find(session[:user_id])
     @answer = Answer.new(user_id: current_user.id, question_id: params[:question_id], body: params[:answer_text])
+    @question = Question.find(params[:question_id])
     if @answer.save
-      redirect "/questions/#{@answer.question.id}"
+      if request.xhr?
+        erb :'/partials/_answer_show', locals: {answer: @answer, question: @question}, layout: false
+      else
+        redirect "/questions/#{@answer.question.id}"
+      end
+
     else
       @errors = answer.errors.full_messages
       erb :'/answer/errors'

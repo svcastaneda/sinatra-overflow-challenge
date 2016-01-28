@@ -75,20 +75,36 @@ $(document).ready(function() {
 		});
 	});
 
-$('.container').on('click','.not-starred', function(event) {
-		event.preventDefault();
-		var questionID
-		var answerID = $(this).closest('article').attr('id');
-		var star = $(this);
-		var changeStar = $.ajax({
-			url: '/answers/'+answerID,
-			type: 'PUT',
-			data: {starred: "true"}
+	$('.container').on('click','.not-starred', function(event) {
+			event.preventDefault();
+			var answerID = $(this).closest('article').attr('id');
+			var star = $(this);
+			var changeStar = $.ajax({
+				url: '/answers/'+answerID,
+				type: 'PUT',
+				data: {starred: "true"}
+			});
+			changeStar.done(function() {
+				// change to appropriate CSS
+			});
 		});
-		changeStar.done(function() {
-			// change to appropriate CSS
+
+	$('.container').on('submit', '.answer_form', function(event) {
+		event.preventDefault();
+		var answerForm = $(this);
+		var submitPath = $(this).attr('action');
+		var answerData = $(this).serialize();
+		var answerSubmit = $.ajax({
+			url: submitPath,
+			type: 'POST',
+			data: answerData
+		});
+		answerSubmit.done(function(response) {
+			$('.container').append(response);
+			var answersCount = parseInt($('.answers-count').text())
+			answersCount++;
+			$('.answers-count').text(answersCount+' answers');
 		});
 	});
-
 });
 

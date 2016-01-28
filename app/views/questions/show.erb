@@ -10,7 +10,7 @@
 	</div>
 </div>
 
-<h3><%= @answers.count %> answers</h3>
+<h3 class="answers-count"><%= @answers.count %> answers</h3>
 
 <% if current_user %>
 	<%= erb :"partials/_answer_new" %>
@@ -19,25 +19,7 @@
 <hr>
 
 <% @answers.each do |answer| %>
-	<article id="<%= answer.id %>" class="answer">
-		<div class="vote">
-			<a href="/answers/<%= answer.id %>/votes/new/1" class="arrow-up"></a>
-			<span><%= score(answer) %></span>
-			<a href="/answers/<%= answer.id %>/votes/new/-1" class="arrow-down"></a>
-			<%= erb :'partials/_star_show', locals: {answer: answer}  %>
-		</div>
-		<div class="answerDetails">
-			<%= erb :"partials/_comment_show", locals: {comment: answer, comment_form_name: "answer_comment"} %>
-
-			<% answer.comments.each do |comment| %>
-					<%= erb :"partials/_comment_show", locals: {comment: comment, comment_form_name: "comment"} %>
-			<% end %>
-		</div>
-
-		<button id="<%= answer.id %>" class="addComment">add comment</button>
-
-		<%= erb :"partials/_comment_new", locals: {commented_on_type: 'answers', commented_on: answer.id, comment_form_name: "answerCommentForm"} %>
-	</article>
+	<%= erb :'partials/_answer_show', locals: {answer: answer} %>
 <% end %>
 
 <% if current_user %>
