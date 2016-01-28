@@ -1,7 +1,7 @@
 <% @questions.each do |question| %>
 	<div class="question">
 		<h3><a href="/questions/<%= question.id %>"><%= question.title %></a></h3>
-		<p>posted by <span class="author"><%= question.user.username %></span> on <%= format_timestamp(question.updated_at) %></p>
+		<p>posted by <span class="author"><a href="/users/<%= author(question) %>"><%= author(question) %></a></span> on <%= format_timestamp(question.updated_at) %></p>
 		<p>
 			<div class="voteCount"><%= question.vote_count %><br>votes</div>
 			<div class="answerCount"><%= question.answer_count %><br>answers</div>
