@@ -141,6 +141,20 @@ nav a:not(:first-child) {
 	background-size: 20px;
 }
 
+.starred, .starred-clickable {
+    width: 20px;
+    height: 20px;
+    background: url('/images/star-black.png') no-repeat;
+    background-size: 20px;
+}
+
+.not-starred {
+    width: 20px;
+    height: 20px;
+    background: url('/images/star-gray.png') no-repeat;
+    background-size: 20px;
+}
+
 .answer {
 	border-bottom: 2px solid black;
 	padding-bottom: 1em;
