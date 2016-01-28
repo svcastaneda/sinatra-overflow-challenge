@@ -1,4 +1,4 @@
-.login form {
+.login {
   width: 235px;
   margin: 0 auto;
   text-align: center;
@@ -7,7 +7,7 @@
   border: 1px solid #E8E8E8;
 }
 
-.login form > input {
+.login > input {
   display: block;
   margin: 10px auto;
   padding: 10px;
@@ -36,4 +36,139 @@
 
 .login p {
   font-size: 14px;
+}
+
+body {
+	min-width: 425px;
+	max-width: 900px;	
+	margin: auto;
+}
+
+header {
+	background-color: #127790;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-width: 415px;
+	height: 5em;
+	padding: 0 2%;
+}
+
+header * {
+	display: inline-block;
+	text-decoration: none;
+	color: white;
+}
+
+header nav {
+	float: right;
+	margin-right: 2em;
+	margin-top: 1.75em;
+}
+
+nav a:link, nav a:visited {
+	color: white;
+}
+
+nav a:not(:first-child) {
+	border-left: 2px solid darkgrey;
+	padding-left: .25em;
+}
+
+.container {
+	margin: auto;
+	padding: 2em;
+	padding-top: 0;
+	margin-top: 7em;
+}
+
+.author {
+	font-weight: 900;
+}
+
+.question {
+	overflow: hidden;
+	background-color: lightgrey;
+	border-radius: 5px;
+	padding: 0.25em 1em;
+	margin: 1em 0 ;
+}
+
+.question a:link, .question a:visited {
+	color: black;
+}
+
+.questionDetails, .answerDetails {
+	float: right;
+	width: 95%;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+.vote {
+/*	float: left;*/
+	width: 3%;
+	box-sizing: border-box;
+	display: inline-block;
+}
+
+.vote * {
+	display: block;
+}
+
+.voteCount, .answerCount {
+	background-color: #599FB1;
+	border: 1px solid black;
+	width: 4em;
+	height: 2.5em;
+	padding: 2px;
+	text-align: center;
+	display: inline-block;
+}
+
+.arrow-up {
+	width: 0; 
+	height: 0; 
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid black;
+}
+
+.arrow-down {
+	width: 0; 
+	height: 0; 
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 5px solid black;
+}
+
+.answer {
+	border-bottom: 2px solid black;
+	padding-bottom: 1em;
+}
+
+.answer button.addComment {
+	display: block;
+	margin-top: 1em;
+}
+
+.comment {
+	margin-left: 2em;
+	margin-top: 1em;
+	border-top: 1px dotted grey;
+}
+
+.answerCommentForm, .questionCommentForm {
+	margin-top: 2em;
+	width: 100%;
+}
+
+.answerCommentForm textarea, .questionCommentForm textarea {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.answerCommentForm button, .questionCommentForm button {
+	width: 7em;
 }

@@ -1,21 +1,25 @@
-get '/questions/new' do
-  erb :'questions/new'
-end
-
-post '/questions' do
-  if session[:user_id]
-    @user = User.find(session[:id])
-    @question = Question.new(user_id: user.id, title: params[:question_title], body: params[:question_body])
-    if question.save
-      redirect "/questions/#{question.id}"
-    else
-      @errors = question.errors.full_messages
-      erb :'/questions/errors'
-    end
-  else
-    redirect "/user/login"
-  end
-end
+# get '/questions/?' do
+#   @questions = Question.order(created_at: :desc, id: :desc).limit(20)
+#   erb :index
+# end
+#
+# get '/questions/new' do
+#   erb :'questions/new'
+# end
+#
+# post '/questions' do
+#   if current_user
+#     @question = Question.new(user_id: current_user.id, title: params[:question_title], body: params[:question_body])
+#     if @question.save
+#       redirect "/questions/#{question.id}"
+#     else
+#       @errors = @question.errors.full_messages
+#       erb :'/questions/errors'
+#     end
+#   else
+#     redirect "/login"
+#   end
+# end
 
 # HTTP Request Type Path  View File Description
 # GET '/questions'  '/questions/index'  display a list of all questions

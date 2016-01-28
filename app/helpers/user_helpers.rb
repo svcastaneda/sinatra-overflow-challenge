@@ -1,5 +1,5 @@
 helpers do
   def current_user
-    User.find(session[:id])
+    User.find_by(id: session[:user_id])
   end
 end

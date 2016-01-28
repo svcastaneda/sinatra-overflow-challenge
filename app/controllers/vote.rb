@@ -1,17 +1,17 @@
 post 'question/:question_id/votes' do
   if request.xhr?
-    Vote.create(user_id: session[:id], value: params[:value], voteable_type: "Question", voteable_id: params[:question_id])
+    Vote.create(user_id: session[:user_id], value: params[:value], voteable_type: "Question", voteable_id: params[:question_id])
   else
-    Vote.create(user_id: session[:id], value: params[:value], voteable_type: "Question", voteable_id: params[:question_id])
+    Vote.create(user_id: session[:user_id], value: params[:value], voteable_type: "Question", voteable_id: params[:question_id])
     redirect "/question/#{params[:question_id]}"
   end
 end
 
 post 'answer/:answer_id/votes' do
   if request.xhr?
-    Vote.create(user_id: session[:id], value: params[:value], voteable_type: "Answer", voteable_id: params[:answer_id])
+    Vote.create(user_id: session[:user_id], value: params[:value], voteable_type: "Answer", voteable_id: params[:answer_id])
   else
-    Vote.create(user_id: session[:id], value: params[:value], voteable_type: "Answer", voteable_id: params[:answer_id])
+    Vote.create(user_id: session[:user_id], value: params[:value], voteable_type: "Answer", voteable_id: params[:answer_id])
     redirect "/question/#{params[:question_id]}"
   end
 end

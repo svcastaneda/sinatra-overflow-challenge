@@ -1,10 +1,10 @@
 <% @questions.each do |question| %>
 	<div class="question">
-		<h3><a href="#"><%= question.title %></a></h3>
-		<p><%= question.user.username %></p>
+		<h3><a href="/questions/<%= question.id %>"><%= question.title %></a></h3>
+		<p>posted by <span class="author"><%= question.user.username %></span> on <%= format_timestamp(question.updated_at) %></p>
 		<p>
-			<span class="voteCount"><%= question.vote_count %> votes<span>
-			<span class="answerCount"><%= question.answer_count %> answers</span>
+			<div class="voteCount"><%= question.vote_count %><br>votes</div>
+			<div class="answerCount"><%= question.answer_count %><br>answers</div>
 		</p>
 	</div>
 <% end %>
