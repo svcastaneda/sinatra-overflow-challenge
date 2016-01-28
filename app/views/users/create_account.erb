@@ -7,8 +7,11 @@
 <% end %>
 <div class="login">
   <form action="/users" method="post">
-    <input type="text" name="new_account[username]" placeholder="Username">
-    <input type="password" name="new_account[password]" placeholder="Password">
+    <label for="username">Username</label>
+      <input type="text" name="new_account[username]" placeholder="zoltron">
+    <label for="password">Password</label>
+      <input type="password" name="new_account[password]" placeholder="*********">
     <button type="submit" value="Create Account">Create Account</button>
+    <p>By registering, you agree to the <a href="#">privacy policy</a> and <a href="#">terms of service</a>.</p>
   </form>
 </div>
