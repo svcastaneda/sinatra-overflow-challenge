@@ -19,7 +19,6 @@ $(document).ready(function() {
     });
 
 		createRequest.done(function(response){
-			console.log(response);
       $('#'+postId + ' .answerDetails').append(response);
       $(".answerCommentForm").trigger("reset");
     });
@@ -37,7 +36,6 @@ $(document).ready(function() {
     });
 
 		createRequest.done(function(response){
-			console.log(response)
       $('.questionComments').append(response);
       $(".questionCommentForm").trigger("reset");
     });
