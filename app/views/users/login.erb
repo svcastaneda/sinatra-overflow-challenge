@@ -1,8 +1,5 @@
 <form action="/login" method="post" class="login">
-  <label for="username">Username</label>
-    <input type="text" name="username"  placeholder="zoltron">
-  <label for="password">Password</label>
-    <input type="password" name="password"  placeholder="**********">
+  <%= erb :"partials/_login_create_inputs" %>
   <button type="submit" value="Login">Login</button>
   <p>Don't have an account? <a href="/users/new">Sign up</a></p>
 </form>
