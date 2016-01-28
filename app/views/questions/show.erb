@@ -1,8 +1,8 @@
 <div class="question" value="<%= @question.id %>">
 	<div class="vote">
-		<a href="/questions/<%= @question.id %>/votes/new" class="arrow-up"></a>
+		<a href="/questions/<%= @question.id %>/votes/new/upvote" class="arrow-up"></a>
 		<span><%= score(@question) %></span>
-		<a href="/questions/<%= @question.id %>/votes/new" class="arrow-down"></a>
+		<a href="/questions/<%= @question.id %>/votes/new/downvote" class="arrow-down"></a>
 	</div>
 	<div class="questionDetails">
 		<h2><%= @question.title %></h2>

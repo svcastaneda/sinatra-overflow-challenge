@@ -42,6 +42,7 @@ end
 
 get '/users/:username' do
   @user = User.find_by(username: params[:username])
+  @questions = @user.questions
   erb :'users/show'
 end
 
