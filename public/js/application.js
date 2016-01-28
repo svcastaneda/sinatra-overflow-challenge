@@ -37,11 +37,35 @@ $(document).ready(function() {
 		$(this).prev().show();
 	});
 
+
 	$('.container').on('click','.starred-clickable', function(event) {
 		event.preventDefault();
-		$.ajax({
-			url: 'answers/
-		})
+		var answerID = $(this).closest('article').attr('id');
+		var star = $(this);
+		var changeStar = $.ajax({
+			url: '/answers/'+answerID,
+			type: 'PUT',
+			data: {"starred":false}
+		});
+		changeStar.done(function() {
+			// change to appropriate CSS
+		});
 	});
+
+$('.container').on('click','.not-starred', function(event) {
+		event.preventDefault();
+		var questionID
+		var answerID = $(this).closest('article').attr('id');
+		var star = $(this);
+		var changeStar = $.ajax({
+			url: '/answers/'+answerID,
+			type: 'PUT',
+			data: {starred: "true"}
+		});
+		changeStar.done(function() {
+			// change to appropriate CSS
+		});
+	});
+
 });
 
