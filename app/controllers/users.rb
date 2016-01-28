@@ -3,8 +3,8 @@ get '/login'  do
 end
 
 post '/login' do
-  user = User.find_by(username: params[:username])
-  if user.authenticate(params[:password])
+  user = User.authenticate(params[:username], params[:password])
+  if user
     session[:user_id] = user.id
     redirect '/'
   else
@@ -27,7 +27,7 @@ post '/users/new' do
   end
 end
 
-get '/users/logout' do
+get '/logout' do
   session[:user_id] = nil
   redirect '/'
 end

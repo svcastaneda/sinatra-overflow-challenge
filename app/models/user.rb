@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
   include BCrypt
-  
+
   has_many :questions
   has_many :comments
   has_many :votes
   has_many :answers
-  
+
   validates :username, :password_hash, {presence: true}
   validates :username, {uniqueness: true}
 
@@ -17,8 +17,8 @@ class User < ActiveRecord::Base
     self.password_hash = Password.create(password_plaintext)
   end
 
-  def authenticate(password_plaintext)
-    user = User.find_by(username: self.username)
+  def self.authenticate(username, password_plaintext)
+    user = User.find_by(username: username)
     return user if user && user.password == password_plaintext
   end
 end

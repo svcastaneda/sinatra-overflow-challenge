@@ -6,7 +6,11 @@
   </ul>
 <% end %>
 <form action="/users/new" method="post" class="login">
-  <%= erb :"partials/_login_create_inputs" %>
+  <label for="username">Username</label>
+    <input type="text" name="new_account[username]" placeholder="zoltron">
+  <label for="password">Password</label>
+    <input type="password" name="new_account[password]" placeholder="*********">
+
   <button type="submit" value="Create Account">Create Account</button>
   <p>By registering, you agree to the <a href="/users/privacy">privacy policy</a> and <a href="/users/terms">terms of service</a>.</p>
 </form>
