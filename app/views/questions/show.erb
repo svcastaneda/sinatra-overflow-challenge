@@ -1,8 +1,8 @@
 <div class="question" value="<%= @question.id %>">
 	<div class="vote">
-		<a href="/questions/<%= @question.id %>/votes/new" class="arrow-up"></a>
+		<a href="/questions/<%= @question.id %>/votes/new/upvote" class="arrow-up"></a>
 		<span><%= score(@question) %></span>
-		<a href="/questions/<%= @question.id %>/votes/new" class="arrow-down"></a>
+		<a href="/questions/<%= @question.id %>/votes/new/downvote" class="arrow-down"></a>
 	</div>
 	<div class="questionDetails">
 		<h2><%= @question.title %></h2>
@@ -21,9 +21,9 @@
 <% @answers.each do |answer| %>
 	<article id="<%= answer.id %>" class="answer">
 		<div class="vote">
-			<a href="/answers/<%= answer.id %>/votes/new/1" class="arrow-up"></a>
+			<a href="/answers/<%= answer.id %>/votes/new/upvote" class="arrow-up"></a>
 			<span><%= score(answer) %></span>
-			<a href="/answers/<%= answer.id %>/votes/new/-1" class="arrow-down"></a>
+			<a href="/answers/<%= answer.id %>/votes/new/downvote" class="arrow-down"></a>
 			<%= erb :'partials/_star_show', locals: {answer: answer}  %>
 		</div>
 		<div class="answerDetails">

@@ -12,7 +12,6 @@ $(document).ready(function() {
 	});
 
 	$('.container').on('click', '.answer .addComment', function(event) {
-		console.log('wuuuuuut');
 		$(this).hide();
 		$(this).next().show();
 	});
@@ -25,37 +24,31 @@ $(document).ready(function() {
 
 	$('.question .vote a').on('click', function(event) {
 		event.preventDefault();
-		// var voteCount = $('.question .vote span').text()
-//
-//     var request = $.ajax({
-// 			url: "/questions/" + $('.question').attr('value') + "/votes/new/",
-//       method: "post",
-//       dataType: "JSON"
-//     });
-//
-//     request.done(function(response) {
-// 			console.log(response['value'])
-// 			$('.question .vote span').text(voteCount + response['vote']['value']);
-//     });
+
+    var request = $.ajax({
+			url: $(this).attr('href'),
+      method: "post",
+      dataType: "JSON"
+    });
+
+    request.done(function(response) {
+			$('.question .vote span').text(response['score']);
+    });
 
 	});
 
 	$('.container').on('click', '.answer .vote a', function(event) {
 		event.preventDefault();
     var voteButton = $(this);
-		var voteCount = parseInt($(voteButton).parent().children('span').text());
-
-		if (voteButton.attr('class') == 'arrow-up') { var value = 1 }
-		else { var value = -1 };
 
     var request = $.ajax({
-      url: "/answers/" + $('.answer').attr('id') + "/votes/new/" + value,
+			url: $(this).attr('href'),
       method: "post",
       dataType: "JSON"
     });
 
     request.done(function(response) {
-			$(voteButton).parent().children('span').text(voteCount + response['vote_value']);
+			$(voteButton).parent().children('span').text(response['score']);
     });
 
 	});
