@@ -1,3 +1,11 @@
+<h3>Questions asked</h3>
+<ul>
+<% @questions.each do |question| %>
+	<li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
+<% end %>
+</ul>
+
+<h3>Questions answered</h3>
 <ul>
 <% @questions.each do |question| %>
 	<li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
