@@ -1,8 +1,8 @@
-get '/sessions/new'  do
+get '/users/login'  do
     erb :'users/login'
 end
 
-post '/sessions' do
+post '/users' do
   user = User.find_by(username: params[:username])
   if user.authenticate(params[:password])
     session[:id] = user.id
