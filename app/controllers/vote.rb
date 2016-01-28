@@ -1,9 +1,15 @@
 post '/questions/:question_id/votes/new/:type' do
-  if request.xhr?
-    question = Question.find(params[:question_id])
+  question = Question.find(params[:question_id])
     value = vote_value(params[:type])
+
+  if request.xhr?
+    current_user.votes.each do |vote|
+      if vote.voteable_id == question.id
+        You
+        return true
+      end
+    end
     question.votes.create(user_id: current_user.id, value: value) if current_user
-    
     content_type :json
     {score: score(question)}.to_json
   else
@@ -12,11 +18,17 @@ post '/questions/:question_id/votes/new/:type' do
 end
 
 post '/answers/:answer_id/votes/new/:type' do
+  answer = Answer.find(params[:answer_id])
+  value = vote_value(params[:type])
   if request.xhr?
-    answer = Answer.find(params[:answer_id])
-    value = vote_value(params[:type])
+    current_user.votes.each do |vote|
+      if vote.voteable_id == answer.id
+        You
+        return true
+      end
+    end
     answer.votes.create(user_id: current_user.id, value: value) if current_user
-    
+
     content_type :json
     {score: score(answer)}.to_json
   else
