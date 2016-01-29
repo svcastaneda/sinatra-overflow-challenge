@@ -222,6 +222,14 @@ nav a:not(:first-child) {
   font-size: 14px;
 }
 
+#questionsAnswered {
+	margin-top: 3em;
+}
+
+#questionsAsked h3, #questionsAnswered h3 {
+	margin-bottom: 0.5em;
+}
+
 table {
 	width: 80%;
 	border: 1px solid black;
