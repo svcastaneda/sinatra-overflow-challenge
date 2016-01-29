@@ -1,4 +1,4 @@
-<% if current_user.id == @question.user_id %>
+<% if current_user && current_user.id == @question.user_id %>
 	<a href="/questions/<%= @question.id %>/edit">edit</a>
 <% end %>
 
