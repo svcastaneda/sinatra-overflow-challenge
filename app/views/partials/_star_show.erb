@@ -1,12 +1,12 @@
 
 <% if answer.starred == true && current_user && current_user.id == @question.user_id %>
-<span class="starred-clickable">star</span>
+<span class="starred-clickable"></span>
 
 <% elsif answer.starred == true %>
-<span class="starred">star</span>
+<span class="starred"></span>
 
 <% elsif current_user && current_user.id == @question.user_id %>
-<span class="not-starred">nostar</span>
+<span class="not-starred"></span>
 
 <% end %>
 

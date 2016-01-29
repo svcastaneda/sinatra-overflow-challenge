@@ -83,7 +83,7 @@ $(document).ready(function() {
     });
 
     request.done(function(response) {
-			$(voteButton).parent().children('span').text(response['score']);
+			$(voteButton).parent().children('.score').text(response['score']);
     });
 
 	});
@@ -99,7 +99,7 @@ $(document).ready(function() {
 			data: {"starred":false}
 		});
 		changeStar.done(function() {
-			// change to appropriate CSS
+			star.removeClass( 'starred-clickable').addClass( 'not-starred' )
 		});
 	});
 
@@ -113,7 +113,7 @@ $(document).ready(function() {
 				data: {starred: "true"}
 			});
 			changeStar.done(function() {
-				// change to appropriate CSS
+				star.removeClass( 'not-starred').addClass( 'starred-clickable' )
 			});
 		});
 

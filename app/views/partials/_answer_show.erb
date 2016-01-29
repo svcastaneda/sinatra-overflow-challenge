@@ -1,7 +1,7 @@
 <article id="<%= answer.id %>" class="answer">
   <div class="vote">
     <a href="/answers/<%= answer.id %>/votes/new/upvote" class="arrow-up"></a>
-    <span><%= score(answer) %></span>
+    <span class="score"><%= score(answer) %></span>
     <a href="/answers/<%= answer.id %>/votes/new/downvote" class="arrow-down"></a>
     <%= erb :'partials/_star_show', locals: {answer: answer}  %>
   </div>
