@@ -9,7 +9,6 @@ post '/questions/:question_id/answers' do
       else
         redirect "/questions/#{@answer.question.id}"
       end
-
     else
       @errors = answer.errors.full_messages
       erb :'/answer/errors'
@@ -20,19 +19,23 @@ post '/questions/:question_id/answers' do
 end
 
 put '/answers/:answer_id' do
-  p params
   @answer = Answer.find(params[:answer_id])
+
+
   if params[:starred] == 'true'
-    @star_status = true
+    if @answer.question.answers.pluck('starred').include?(true)
+      @star_status = false
+      error 422 if request.xhr?
+    else
+      @star_status = true
+    end
   elsif params[:starred] == 'false'
     @star_status = false
   end
-  p @star_status
-  if request.xhr?
+
     @answer.update_attribute(:starred, @star_status)
-  else
-    @answer.update_attribute(:starred, @star_status)
+    if request.xhr? == false
     @question = Question.find(params[:question_id])
     erb :'questions/show'
+    end
   end
-end
