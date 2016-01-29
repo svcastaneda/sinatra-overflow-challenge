@@ -10,7 +10,6 @@ end
 
 post '/questions' do
   if current_user
-    @user = User.find(session[:id])
     @question = Question.new(user_id: current_user.id, title: params[:question_title], body: params[:question_body])
     if @question.save
       redirect "/questions/#{@question.id}"
@@ -19,17 +18,44 @@ post '/questions' do
       erb :'/questions/errors'
     end
   else
-    redirect "/user/login"
+    redirect "/login"
   end
 end
 
+get '/questions/:q_id/edit' do
+  @question = Question.find(params[:q_id])
+  
+  if @question.user_id == current_user.id
+    erb :'questions/edit'
+  else
+    erb :'errors/500'
+  end
+end
+
+post '/questions/:q_id/edit' do
+  @question = Question.find(params[:q_id])
+  @question.update_attributes(title: params[:question_title], body: params[:question_body])
+  redirect to "/questions/#{@question.id}"
+end
+
 get '/questions/:q_id' do
-  p @question = Question.find(params[:q_id])
+  @question = Question.find(params[:q_id])
   if @question
-    p @answers = @question.answers
+    @answers = @question.answers
     erb :'questions/show'
   else #make this work
     erb :'errors/404'
+  end
+end
+
+delete '/questions/:q_id/delete' do
+  @question = Question.find(params[:q_id])
+  
+  if @question.user_id == current_user.id
+    Question.destroy(params[:q_id])
+    redirect to '/questions'
+  else
+    erb :'errors/500'
   end
 end
 
