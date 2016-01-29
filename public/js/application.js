@@ -11,7 +11,7 @@ $(document).ready(function() {
     var commentContent = $(this).serialize();
     var postId = $(this).closest('article').attr('id');
 
-    if(commentContent !=""){
+    if (commentContent !="comment_text=") {
     var createRequest = $.ajax({
       url: '/answers/'+ postId + '/comments/new',
       type: 'POST',
@@ -30,7 +30,7 @@ $(document).ready(function() {
     var commentContent = $(this).serialize();
     var postId = $('.question').attr('id');
 
-    if(commentContent !=""){
+    if (commentContent !="comment_text=") {
     var createRequest = $.ajax({
       url: '/questions/'+ postId + '/comments/new',
       type: 'POST',
@@ -42,7 +42,7 @@ $(document).ready(function() {
       $('.questionComments').append(response);
       $(".questionCommentForm").trigger("reset");
     });
-  }
+    }
 	});
 
 	$('.container').on('click', 'button.addComment', function(event) {
