@@ -4,7 +4,7 @@ $(document).ready(function() {
   // when we try to bind to them
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
-	$('.answerCommentForm').hide();
+	$('.answerCommentForm, .addQuestionComment').hide();
 
 	$('body').on('submit', '.answerCommentForm', function( event ) {
 		event.preventDefault();
@@ -40,8 +40,24 @@ $(document).ready(function() {
       $(".questionCommentForm").trigger("reset");
     });
 	});
+	
+	// question comments
+	$('#').on('click', 'button.addComment', function(event) {
+		$('.addQuestionComment').show();
+	});
 
+	$('#newQuestionComment').on('click', function(event) {
+		$(this).hide();
+		$(this).next().show();
+	});
 
+	$('.questionCommentForm').on('submit', function(event) {
+		event.preventDefault();
+		$(this).hide();
+		$(this).prev().show();
+	});
+
+	// answer comments
 	$('.container').on('click', 'button.addComment', function(event) {
 		$('form.newComment').show();
 	});
