@@ -11,12 +11,13 @@ $(document).ready(function() {
     var commentContent = $(this).serialize();
     var postId = $(this).closest('article').attr('id');
 
-
+    if (commentContent !="comment_text=") {
     var createRequest = $.ajax({
       url: '/answers/'+ postId + '/comments/new',
       type: 'POST',
       data: commentContent
     });
+  }
 
 		createRequest.done(function(response){
       $('#'+postId + ' .answerDetails').append(response);
@@ -29,18 +30,20 @@ $(document).ready(function() {
     var commentContent = $(this).serialize();
     var postId = $('.question').attr('id');
 
+    if (commentContent !="comment_text=") {
     var createRequest = $.ajax({
       url: '/questions/'+ postId + '/comments/new',
       type: 'POST',
       data: commentContent
     });
 
+
 		createRequest.done(function(response){
       $('.questionComments').append(response);
       $(".questionCommentForm").trigger("reset");
     });
+    }
 	});
-
 
 	$('.container').on('click', 'button.addComment', function(event) {
 		$('form.newComment').show();

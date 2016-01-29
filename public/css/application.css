@@ -190,18 +190,33 @@ nav a:not(:first-child) {
 }
 
 #add_question {
-  width: 400px;
-  height:500px;
+  width: 26em;
+  height: 35em;
   margin: 0 auto;
   text-align: center;
   padding: 20px;
   border-radius: 5px;
   border: 1px solid #E8E8E8;
+  background-color: lightgrey;
+}
+
+#add_question textarea {
+  width: 25em;
+  height: 25em;
+  resize: none;
+}
+
+#add_question #q_title {
+  width: 20.5em;
 }
 
 #add_question #q_btn {
   background: url('/images/red-flannel.jpg') repeat;
   color: ghostwhite;
+  width:200px;
+  height:50px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 
@@ -221,10 +236,6 @@ nav a:not(:first-child) {
   border: none;
   border-radius: 5px;
   padding: 10px 15px;
-}
-
-#add_question:active {
-  box-shadow: inset 0 0 0 1px #27496d,inset 0 5px 30px #193047;
 }
 
 #add_question form > label {
