@@ -22,8 +22,6 @@ post '/answers/:answer_id/comments/new' do
       redirect "answers/#{params[:answer_id]}"
     end
   else
-      @errors = @comment.errors.full_messages
-      erb :'/questions/errors'
-    # redirect "answers/#{params[:answer_id]}"
+    redirect "answers/#{params[:answer_id]}"
   end
 end
