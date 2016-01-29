@@ -1,13 +1,38 @@
+<h2><%= @user.username %></h2>
+<hr>
+
 <h3>Questions asked</h3>
-<ul>
-<% @questions.each do |question| %>
-	<li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
+<% if @questions_asked.empty? %>
+	<p>No questions asked!</p>
+<% else %>
+	<table>
+		<tr>
+			<th>Title</th>
+			<th>Score</th>
+		</tr>
+		<% @questions_asked.each do |question| %>
+			<tr>
+				<td><a href="/questions/<%= question.id %>"><%= question.title %></a></td>
+				<td><%= score(question) %></td>
+			</tr>
+		<% end %>
+	</table>
 <% end %>
-</ul>
 
 <h3>Questions answered</h3>
-<ul>
-<% @questions.each do |question| %>
-	<li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
+<% if @questions_answered.empty? %>
+	<p>No questions answered!</p>
+<% else %>
+	<table>
+		<tr>
+			<th>Title</th>
+			<th>Score</th>
+		</tr>
+		<% @questions_answered.each_with_index do |question, index| %>
+			<tr>
+				<td><a href="/questions/<%= question.id %>"><%= question.title %></a></td>
+				<td><%= score(@answers[index]) %></td>
+			</tr>
+		<% end %>
+	</table>
 <% end %>
-</ul>

@@ -221,3 +221,39 @@ nav a:not(:first-child) {
 #add_question p {
   font-size: 14px;
 }
+
+table {
+	width: 80%;
+	border: 1px solid black;
+}
+
+table a {
+	text-decoration: none;
+}
+
+table a:hover {
+	color: #99050b;
+}
+
+table th {
+	background-color: #99050b;
+	color: lavenderblush;
+}
+
+th:nth-child(1), td:nth-child(1) {
+	width: 90%;
+	text-align: left;
+}
+
+th:nth-child(2), td:nth-child(2) {
+	text-align: center;
+	border-left: 1px solid black;
+}
+
+th, td {
+	padding: 5px;
+}
+
+td {
+	border-top: 1px solid black;
+}

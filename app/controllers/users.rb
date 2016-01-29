@@ -42,7 +42,9 @@ end
 
 get '/users/:username' do
   @user = User.find_by(username: params[:username])
-  @questions = @user.questions
+  @questions_asked = @user.questions
+  @answers = @user.answers
+  @questions_answered = Question.find(@answers.pluck('question_id'))
   erb :'users/show'
 end
 
