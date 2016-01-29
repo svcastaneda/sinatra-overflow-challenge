@@ -1,3 +1,6 @@
+<% if current_user.id == @question.user_id %>
+	<a href="/questions/<%= @question.id %>/edit">edit</a>
+<% end %>
 
 <div class="question" id="<%= @question.id %>">
 	<div class="vote">
@@ -12,15 +15,17 @@
 </div>
 
 
-	<div class = "questionComments">
-		<h4>Question Comments</h4>
-			<% @question.comments.each do |comment| %>
-				<%= erb :"partials/_comment_show", locals: {
-					comment: comment, comment_form_name: "comment"} %>
-			<% end %>
-		</div>
-		<button id="newQuestionComment">add comment</button>
-		<% if current_user %>
+<div class = "questionComments">
+	<h4>Question Comments</h4>
+	<% @question.comments.each do |comment| %>
+		<%= erb :"partials/_comment_show", locals: {
+			comment: comment, comment_form_name: "comment"} %>
+	<% end %>
+</div>
+
+<button id="newQuestionComment">add comment</button>
+
+<% if current_user %>
 	<div class="addQuestionComment">
 		<%= erb :"partials/_comment_new", locals: {commented_on_type: 'questions', commented_on: @question.id, comment_form_name: "questionCommentForm"} %>
 	</div>

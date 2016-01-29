@@ -1,0 +1,9 @@
+<form id="add_question" method="post" action="/questions/<%= @question.id %>/edit">
+	<h1>Update your question!</h1>
+	<%= erb :"/partials/_question_form", locals: {question: @question} %>
+</form>
+
+<form id="deleteQuestion" method="post" action="/questions/<%= @question.id %>/delete">
+	<input type="hidden" name="_method" value="delete">
+	<button type="submit">delete</button>
+</form>
